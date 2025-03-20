@@ -1,0 +1,21 @@
+1:"$Sreact.fragment"
+2:I[3856,["871","static/chunks/871-205d88e0ffdf741d.js","177","static/chunks/app/layout-d1107af224272198.js"],"ThemeProvider"]
+3:I[3253,["871","static/chunks/871-205d88e0ffdf741d.js","177","static/chunks/app/layout-d1107af224272198.js"],"default"]
+4:I[6286,[],""]
+5:I[6852,[],""]
+6:I[2741,["871","static/chunks/871-205d88e0ffdf741d.js","177","static/chunks/app/layout-d1107af224272198.js"],"default"]
+7:I[5327,[],"ClientPageRoot"]
+8:I[3664,["871","static/chunks/871-205d88e0ffdf741d.js","974","static/chunks/app/page-0da2d60c5f29e691.js"],"default"]
+b:I[1391,[],"OutletBoundary"]
+d:I[1391,[],"MetadataBoundary"]
+f:I[1391,[],"ViewportBoundary"]
+11:I[3865,[],""]
+:HL["/_next/static/media/569ce4b8f30dc480-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/93f479601ee12b01-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/css/85e05d8fb27fbecb.css","style"]
+0:{"P":null,"b":"pcUkEt45iR2yKLV-DDeqc","p":"","c":["",""],"i":false,"f":[[["",{"children":["__PAGE__",{}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/85e05d8fb27fbecb.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":["$","body",null,{"className":"__variable_4d318d __variable_ea5f4b antialiased theme-transition","children":["$","$L2",null,{"attribute":"class","defaultTheme":"light","enableSystem":true,"disableTransitionOnChange":false,"children":["$","div",null,{"className":"flex min-h-screen flex-col","children":[["$","$L3",null,{}],["$","main",null,{"className":"flex-1","children":["$","$L4",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[],[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L6",null,{}]]}]}]}]}]]}],{"children":["__PAGE__",["$","$1","c",{"children":[["$","$L7",null,{"Component":"$8","searchParams":{},"params":{},"promises":["$@9","$@a"]}],null,["$","$Lb",null,{"children":"$Lc"}]]}],{},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","xZyx9zHlEleW4478v4wr6",{"children":[["$","$Ld",null,{"children":"$Le"}],["$","$Lf",null,{"children":"$L10"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]]}],false]],"m":"$undefined","G":["$11","$undefined"],"s":false,"S":true}
+9:{}
+a:{}
+10:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+e:[["$","meta","0",{"charSet":"utf-8"}],["$","title","1",{"children":"Datara AI - Advanced AI-Powered Token on Solana"}],["$","meta","2",{"name":"description","content":"Datara AI is an advanced AI-powered token traded on Solana Raydium, with future plans for multichain expansion."}],["$","meta","3",{"name":"keywords","content":"Datara AI, AI token, Solana, Raydium, cryptocurrency, blockchain, artificial intelligence"}],["$","link","4",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]]
+c:null
