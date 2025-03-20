@@ -9,7 +9,7 @@ export async function incrementAndLog() {
 
   // @ts-ignore
   const { results: countResults } = await cf.env.DB.prepare(
-Fix: Temporarily ignore TypeScript error in counter.ts
+
 
     'INSERT INTO counters (name, value) VALUES (?, 1) ON CONFLICT (name) DO UPDATE SET value = value + 1 RETURNING value'
   )
