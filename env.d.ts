@@ -1,5 +1,9 @@
-// Fix: Add missing env.d.ts file for CloudflareEnv
+// Fix: Ensure CloudflareEnv recognizes 'DB'
 
 export interface CloudflareEnv {
-  DB: any; // Temporary fix, replace 'any' with the correct database type if known
+  DB: D1Database; // Ensure TypeScript recognizes Cloudflare D1 Database
 }
+
+declare const cf: { env: CloudflareEnv };
+
+Fix: Add CloudflareEnv DB type definition
