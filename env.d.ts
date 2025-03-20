@@ -6,4 +6,4 @@ export interface CloudflareEnv {
 
 declare const cf: { env: CloudflareEnv };
 
-Fix: Add CloudflareEnv DB type definition
+
