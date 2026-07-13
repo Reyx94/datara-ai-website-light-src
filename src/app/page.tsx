@@ -35,7 +35,7 @@ export default function Home() {
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-3">
               <Link
-                href="/premium"
+                href="/login"
                 className="btn-hover-effect inline-flex h-12 items-center justify-center rounded-md bg-primary px-6 text-base font-medium text-primary-foreground shadow hover:bg-primary/90"
               >
                 Join the Community

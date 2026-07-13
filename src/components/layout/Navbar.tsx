@@ -32,13 +32,13 @@ export default function Navbar() {
         <div className="hidden items-center gap-2 lg:flex">
           <ThemeToggle />
           <Link
-            href="/premium"
+            href="/login"
             className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary"
           >
             Login
           </Link>
           <Link
-            href="/premium"
+            href="/login"
             className="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
           >
             Join
@@ -71,11 +71,11 @@ export default function Navbar() {
               </Link>
             ))}
             <Link
-              href="/premium"
+              href="/login"
               className="mt-2 inline-flex h-10 w-full items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90"
               onClick={() => setIsMenuOpen(false)}
             >
-              Join the Community
+              Login / Join
             </Link>
           </nav>
         </div>
