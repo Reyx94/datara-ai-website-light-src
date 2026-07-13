@@ -140,6 +140,90 @@ body {
   transition: all 0.3s ease;
 }
 
+/* ---- Futuristic biotech theme ---- */
+
+/* Aurora / holographic hero background */
+.aurora {
+  position: relative;
+  background:
+    radial-gradient(60% 55% at 15% 20%, rgba(56, 189, 248, 0.18), transparent 60%),
+    radial-gradient(50% 50% at 85% 15%, rgba(139, 92, 246, 0.18), transparent 60%),
+    radial-gradient(60% 60% at 70% 90%, rgba(34, 211, 238, 0.14), transparent 60%);
+}
+.dark .aurora {
+  background:
+    radial-gradient(60% 55% at 15% 20%, rgba(56, 189, 248, 0.22), transparent 60%),
+    radial-gradient(50% 50% at 85% 15%, rgba(139, 92, 246, 0.24), transparent 60%),
+    radial-gradient(60% 60% at 70% 90%, rgba(34, 211, 238, 0.18), transparent 60%);
+}
+
+/* Animated conic glow blob */
+.aurora::before {
+  content: '';
+  position: absolute;
+  inset: -20% 0 auto -10%;
+  height: 480px;
+  background: conic-gradient(from 180deg at 50% 50%, #22d3ee33, #6366f133, #a855f733, #22d3ee33);
+  filter: blur(90px);
+  opacity: 0.55;
+  pointer-events: none;
+  animation: spin-slow 22s linear infinite;
+}
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+/* Neon holographic text */
+.neon-text {
+  background: linear-gradient(90deg, #06b6d4, #6366f1 45%, #a855f7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Holographic border card */
+.holo-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid transparent;
+  background-clip: padding-box;
+}
+.holo-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(34, 211, 238, 0.6), rgba(139, 92, 246, 0.5), transparent 70%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+.dark .holo-card {
+  background: rgba(20, 22, 30, 0.6);
+}
+
+/* Soft glow ring for CTAs */
+.glow-ring {
+  box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.25), 0 8px 30px -8px rgba(56, 189, 248, 0.55);
+}
+
+/* Grid overlay for tech feel */
+.tech-grid {
+  background-image:
+    linear-gradient(to right, rgba(99, 102, 241, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(99, 102, 241, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+}
+
+.float-slow { animation: float 6s ease-in-out infinite; }
+
 /* Subtle grid background */
 .bg-grid-pattern {
   background-image: 
@@ -190,17 +274,4 @@ body {
 
 .dark .card-hover:hover {
   box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
-}
-
-/* Raydium integration specific styles */
-.raydium-card {
-  border: 1px solid rgba(59, 130, 246, 0.2);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(240, 249, 255, 0.8));
-  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.1);
-}
-
-.dark .raydium-card {
-  border: 1px solid rgba(59, 130, 246, 0.3);
-  background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.8));
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
