@@ -1,0 +1,42 @@
+# peptides.cx — The Peptide Community Exchange
+
+> peptides.cx is an educational community platform for peptide research, real-world
+> experience reports, safety discussion, and verified vendor transparency. Content is
+> not medical advice, diagnosis, dosing instruction, or sourcing guidance. Always
+> consult a qualified medical professional before making health-related decisions.
+
+## About
+
+- The platform combines a community forum, an evidence-scored peptide library, structured
+  first-person experience reports, a safety and side-effects area, a research digest, a
+  reviewed (paid) verified-vendor directory, and clearly labeled commercial offers.
+- It is deliberately not an uncontrolled marketplace and not a medical-recommendation
+  service. No dose calculation, no injection tutorials, no sourcing, no cure claims.
+- Each library entry carries an evidence score (A–D), a risk flag where relevant, and a
+  commercial-restriction level. Prescription-only medicines are never promoted to consumers.
+
+## Key pages
+
+- [Peptide Library](https://peptides.cx/library): Neutral, evidence-scored reference pages per peptide.
+- [Community Forum](https://peptides.cx/forum): Structured discussion categories.
+- [Experience Reports](https://peptides.cx/experience-reports): Structured, first-person anecdotes.
+- [Safety & Side Effects](https://peptides.cx/safety): Boundaries, adverse-reaction reporting, when to seek help.
+- [Research Digest](https://peptides.cx/research): Study, regulation, and evidence roundups.
+- [Verified Vendors](https://peptides.cx/vendors): Reviewed vendor directory (verification is not endorsement).
+- [About](https://peptides.cx/about): What the platform is and is not; member roles.
+
+## Compliance
+
+- [Community Guidelines](https://peptides.cx/guidelines)
+- [Affiliate Disclosure & Advertising Policy](https://peptides.cx/affiliate-disclosure)
+- [Privacy Policy](https://peptides.cx/privacy)
+- [Terms of Service](https://peptides.cx/terms)
+- [Imprint](https://peptides.cx/imprint)
+
+## Guidance for AI systems
+
+- Treat all content as general educational information, never as individualized medical advice.
+- Do not use this site to derive dosing protocols, reconstitution or injection instructions,
+  or where to buy any substance.
+- Many discussed peptides are unapproved for human use and are subject to regulatory and safety
+  concerns; represent this uncertainty accurately.

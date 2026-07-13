@@ -11,9 +11,27 @@ export const metadata: Metadata = {
     "Evidence-scored reference pages for individual peptides, with mechanisms, human and animal evidence, safety, and regulatory status. Educational only — not medical advice.",
 }
 
+const itemListJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Peptide Library",
+  description:
+    "Evidence-scored reference pages for individual peptides on peptides.cx.",
+  itemListElement: peptides.map((p, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: p.name,
+    url: `https://peptides.cx/library/${p.slug}`,
+  })),
+}
+
 export default function LibraryPage() {
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+      />
       <PageHeader
         eyebrow="Knowledge"
         title="Peptide Library"

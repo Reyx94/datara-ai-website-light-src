@@ -42,8 +42,45 @@ export default async function PeptidePage({ params }: { params: Promise<{ slug: 
   const peptide = getPeptide(slug)
   if (!peptide) notFound()
 
+  const pageUrl = `https://peptides.cx/library/${peptide.slug}`
+  const articleJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    '@id': `${pageUrl}#article`,
+    headline: `${peptide.name} — evidence, safety and regulatory status`,
+    description: peptide.summary,
+    url: pageUrl,
+    inLanguage: 'en',
+    dateModified: peptide.lastReviewed,
+    isPartOf: { '@id': 'https://peptides.cx/#website' },
+    publisher: { '@id': 'https://peptides.cx/#organization' },
+    about: {
+      '@type': 'DefinedTerm',
+      name: peptide.name,
+      alternateName: peptide.aliases,
+      description: peptide.whatIsIt,
+    },
+  }
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://peptides.cx/' },
+      { '@type': 'ListItem', position: 2, name: 'Peptide Library', item: 'https://peptides.cx/library' },
+      { '@type': 'ListItem', position: 3, name: peptide.name, item: pageUrl },
+    ],
+  }
+
   return (
     <div className="pb-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <Breadcrumbs
         items={[
           { label: "Home", href: "/" },
