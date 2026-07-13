@@ -48,6 +48,21 @@ export async function signUp(_prev: AuthState, formData: FormData): Promise<Auth
   }
 }
 
+export async function signInWithProvider(formData: FormData): Promise<void> {
+  const provider = String(formData.get("provider") ?? "")
+  if (provider !== "google" && provider !== "apple") return
+  if (!isSupabaseConfigured()) redirect("/login?error=not-configured")
+
+  const origin = (await headers()).get("origin") ?? ""
+  const supabase = await createClient()
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider,
+    options: { redirectTo: `${origin}/auth/callback` },
+  })
+  if (error || !data.url) redirect("/login?error=oauth")
+  redirect(data.url)
+}
+
 export async function signOut() {
   if (isSupabaseConfigured()) {
     const supabase = await createClient()

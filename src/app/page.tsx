@@ -14,6 +14,7 @@ import { EvidenceBadge, RiskFlagBadge } from "@/components/compliance/evidence-b
 import { AdLabel, VerifiedBadge } from "@/components/compliance/ad-label"
 import { getCurrentLocale } from "@/i18n/server"
 import { getDictionary } from "@/i18n/dictionaries"
+import { HeroVisual } from "@/components/site/hero-visual"
 
 export default async function Home() {
   const dict = getDictionary(await getCurrentLocale())
@@ -22,46 +23,52 @@ export default async function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-border bg-grid-pattern">
-        <div className="container relative z-10 py-20 md:py-28">
-          <div className="mx-auto max-w-3xl text-center">
-            <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-border bg-background/70 px-3 py-1 text-xs font-medium text-foreground/70">
+      <section className="aurora relative overflow-hidden border-b border-border">
+        <div className="tech-grid pointer-events-none absolute inset-0" />
+        <div className="container relative z-10 grid items-center gap-10 py-20 md:py-28 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="text-center lg:text-left">
+            <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-background/70 px-3 py-1 text-xs font-medium text-foreground/70 backdrop-blur">
               <ShieldCheck className="h-3.5 w-3.5 text-primary" />
               {dict.hero.badge}
             </span>
-            <h1 className="text-4xl font-bold md:text-6xl">
+            <h1 className="text-4xl font-bold tracking-tight md:text-6xl">
               {dict.hero.titleLead}
-              <span className="gradient-text">{dict.hero.titleAccent}</span>
+              <span className="neon-text">{dict.hero.titleAccent}</span>
               {dict.hero.titleTail}
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-foreground/75 md:text-xl">
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-foreground/75 md:text-xl lg:mx-0">
               {dict.hero.subtitle}
             </p>
-            <div className="mt-10 flex flex-wrap justify-center gap-3">
+            <div className="mt-10 flex flex-wrap justify-center gap-3 lg:justify-start">
               <Link
                 href="/login"
-                className="btn-hover-effect inline-flex h-12 items-center justify-center rounded-md bg-primary px-6 text-base font-medium text-primary-foreground shadow hover:bg-primary/90"
+                className="glow-ring btn-hover-effect inline-flex h-12 items-center justify-center rounded-md bg-primary px-6 text-base font-medium text-primary-foreground transition-transform hover:-translate-y-0.5 hover:bg-primary/90"
               >
                 {dict.hero.ctaJoin}
               </Link>
               <Link
                 href="/library"
-                className="inline-flex h-12 items-center justify-center rounded-md border border-input bg-background px-6 text-base font-medium hover:bg-accent hover:text-accent-foreground"
+                className="inline-flex h-12 items-center justify-center rounded-md border border-input bg-background/70 px-6 text-base font-medium backdrop-blur hover:bg-accent hover:text-accent-foreground"
               >
                 {dict.hero.ctaLibrary}
               </Link>
               <Link
                 href="/vendors"
-                className="inline-flex h-12 items-center justify-center rounded-md border border-input bg-background px-6 text-base font-medium hover:bg-accent hover:text-accent-foreground"
+                className="inline-flex h-12 items-center justify-center rounded-md border border-input bg-background/70 px-6 text-base font-medium backdrop-blur hover:bg-accent hover:text-accent-foreground"
               >
                 {dict.hero.ctaVendors}
               </Link>
               <Link
                 href="/safety"
-                className="inline-flex h-12 items-center justify-center rounded-md border border-input bg-background px-6 text-base font-medium hover:bg-accent hover:text-accent-foreground"
+                className="inline-flex h-12 items-center justify-center rounded-md border border-input bg-background/70 px-6 text-base font-medium backdrop-blur hover:bg-accent hover:text-accent-foreground"
               >
                 {dict.hero.ctaSafety}
               </Link>
+            </div>
+          </div>
+          <div className="relative mx-auto w-full max-w-md">
+            <div className="float-slow">
+              <HeroVisual className="aspect-square w-full" />
             </div>
           </div>
         </div>

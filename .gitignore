@@ -4,7 +4,6 @@
 .pnp.*
 
 # lockfiles from ad-hoc installs (project uses pnpm)
-package-lock.json
 yarn.lock
 
 # testing
