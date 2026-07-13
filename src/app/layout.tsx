@@ -4,6 +4,7 @@ import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
+import { CookieConsent } from '@/components/compliance/cookie-consent'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -16,9 +17,22 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Datara AI - Advanced AI-Powered Token on Solana',
-  description: 'Datara AI is an advanced AI-powered token traded on Solana Raydium, with future plans for multichain expansion.',
-  keywords: 'Datara AI, AI token, Solana, Raydium, cryptocurrency, blockchain, artificial intelligence',
+  metadataBase: new URL('https://peptides.cx'),
+  title: {
+    default: 'peptides.cx — The Peptide Community Exchange',
+    template: '%s — peptides.cx',
+  },
+  description:
+    'peptides.cx is an educational community platform for peptide research, real-world experience reports, safety discussion and verified vendor transparency. Not medical advice.',
+  keywords: [
+    'peptides',
+    'peptide research',
+    'peptide community',
+    'peptide safety',
+    'experience reports',
+    'verified peptide vendors',
+    'peptide library',
+  ],
 }
 
 export default function RootLayout({
@@ -40,6 +54,7 @@ export default function RootLayout({
             <main className="flex-1">{children}</main>
             <Footer />
           </div>
+          <CookieConsent />
         </ThemeProvider>
       </body>
     </html>
