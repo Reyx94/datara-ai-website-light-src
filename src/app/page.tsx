@@ -12,8 +12,11 @@ import {
 import { peptides } from "@/lib/peptides"
 import { EvidenceBadge, RiskFlagBadge } from "@/components/compliance/evidence-badge"
 import { AdLabel, VerifiedBadge } from "@/components/compliance/ad-label"
+import { getCurrentLocale } from "@/i18n/server"
+import { getDictionary } from "@/i18n/dictionaries"
 
-export default function Home() {
+export default async function Home() {
+  const dict = getDictionary(await getCurrentLocale())
   const libraryHighlights = peptides.slice(0, 6)
 
   return (
@@ -24,39 +27,40 @@ export default function Home() {
           <div className="mx-auto max-w-3xl text-center">
             <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-border bg-background/70 px-3 py-1 text-xs font-medium text-foreground/70">
               <ShieldCheck className="h-3.5 w-3.5 text-primary" />
-              Educational community · Not medical advice
+              {dict.hero.badge}
             </span>
             <h1 className="text-4xl font-bold md:text-6xl">
-              The <span className="gradient-text">Peptide Community</span> Exchange
+              {dict.hero.titleLead}
+              <span className="gradient-text">{dict.hero.titleAccent}</span>
+              {dict.hero.titleTail}
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-foreground/75 md:text-xl">
-              Research, real-world reports, safety discussion, and verified vendor transparency — all in one
-              structured community.
+              {dict.hero.subtitle}
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-3">
               <Link
                 href="/login"
                 className="btn-hover-effect inline-flex h-12 items-center justify-center rounded-md bg-primary px-6 text-base font-medium text-primary-foreground shadow hover:bg-primary/90"
               >
-                Join the Community
+                {dict.hero.ctaJoin}
               </Link>
               <Link
                 href="/library"
                 className="inline-flex h-12 items-center justify-center rounded-md border border-input bg-background px-6 text-base font-medium hover:bg-accent hover:text-accent-foreground"
               >
-                Browse Peptide Library
+                {dict.hero.ctaLibrary}
               </Link>
               <Link
                 href="/vendors"
                 className="inline-flex h-12 items-center justify-center rounded-md border border-input bg-background px-6 text-base font-medium hover:bg-accent hover:text-accent-foreground"
               >
-                Explore Verified Vendors
+                {dict.hero.ctaVendors}
               </Link>
               <Link
                 href="/safety"
                 className="inline-flex h-12 items-center justify-center rounded-md border border-input bg-background px-6 text-base font-medium hover:bg-accent hover:text-accent-foreground"
               >
-                Read Safety Guidelines
+                {dict.hero.ctaSafety}
               </Link>
             </div>
           </div>
@@ -66,10 +70,7 @@ export default function Home() {
       {/* Trust notice */}
       <section className="border-b border-border bg-secondary/40">
         <div className="container py-4">
-          <p className="text-center text-sm text-foreground/70">
-            peptides.cx is an educational and community platform. Content is not medical advice. Vendor
-            listings and affiliate links may be paid placements and do not equal medical endorsement.
-          </p>
+          <p className="text-center text-sm text-foreground/70">{dict.trustNotice}</p>
         </div>
       </section>
 

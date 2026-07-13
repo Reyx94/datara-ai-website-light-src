@@ -5,6 +5,10 @@ import { ThemeProvider } from '@/components/theme-provider'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import { CookieConsent } from '@/components/compliance/cookie-consent'
+import { I18nProvider } from '@/components/i18n/i18n-provider'
+import { LanguageGate } from '@/components/i18n/language-gate'
+import { getCurrentLocale, hasLocaleCookie } from '@/i18n/server'
+import { getDictionary } from '@/i18n/dictionaries'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -102,13 +106,17 @@ const websiteJsonLd = {
   publisher: { '@id': `${SITE_URL}/#organization` },
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const locale = await getCurrentLocale()
+  const dict = getDictionary(locale)
+  const localeChosen = await hasLocaleCookie()
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased theme-transition`}>
         <script
           type="application/ld+json"
@@ -124,12 +132,15 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange={false}
         >
-          <div className="flex min-h-screen flex-col">
-            <Navbar />
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </div>
-          <CookieConsent />
+          <I18nProvider locale={locale} dict={dict} hasLocaleCookie={localeChosen}>
+            <div className="flex min-h-screen flex-col">
+              <Navbar />
+              <main className="flex-1">{children}</main>
+              <Footer />
+            </div>
+            <CookieConsent />
+            <LanguageGate />
+          </I18nProvider>
         </ThemeProvider>
       </body>
     </html>

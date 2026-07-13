@@ -2,9 +2,11 @@
 
 import Link from "next/link"
 import { footerNav } from "@/lib/site"
+import { useI18n } from "@/components/i18n/i18n-provider"
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
+  const { dict } = useI18n()
 
   const openCookieSettings = () => {
     window.dispatchEvent(new Event("open-cookie-settings"))
@@ -18,10 +20,7 @@ export default function Footer() {
             <span className="text-lg font-bold gradient-text">peptides</span>
             <span className="text-lg font-bold text-foreground/70">.cx</span>
           </Link>
-          <p className="text-sm text-muted-foreground">
-            The Peptide Community Exchange. Research, real-world reports, safety discussion, and verified
-            vendor transparency.
-          </p>
+          <p className="text-sm text-muted-foreground">{dict.footerTagline}</p>
         </div>
 
         {footerNav.map((group) => (
