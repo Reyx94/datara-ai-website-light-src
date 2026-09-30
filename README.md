@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# peptides.cx — The Peptide Community Exchange
 
-## Getting Started
+An educational community platform for peptide research, real-world experience reports, safety
+discussion, and verified vendor transparency. **Content is not medical advice.**
 
-First, run the development server:
+Built with Next.js 15 (App Router), Tailwind CSS, and shadcn/ui.
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Production build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Structure
 
-To learn more about Next.js, take a look at the following resources:
+| Area | Path |
+| --- | --- |
+| Homepage | `src/app/page.tsx` |
+| Forum categories | `src/app/forum/` (config in `src/lib/site.ts`) |
+| Peptide Library (evidence-scored) | `src/app/library/` (data in `src/lib/peptides.ts`) |
+| Experience report form | `src/app/new-experience-report/` |
+| Vendors & application | `src/app/vendors/`, `src/app/vendor-application/` |
+| Deals (labeled advertising) | `src/app/deals/` |
+| Compliance UI (disclaimers, ad labels, cookie consent, report button) | `src/components/compliance/` |
+| Auth & roles (Supabase) | `src/lib/supabase/`, `src/app/login/`, `src/app/account/`, `src/app/admin/` |
+| Legal pages | `src/app/{privacy,terms,imprint,guidelines,affiliate-disclosure,cookie-settings}/` |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Authentication (Supabase)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Users and admins are backed by Supabase Auth + a `profiles` table with a role model.
 
-## Deploy on Vercel
+1. Run the migration in the Supabase SQL editor: `supabase/migrations/0001_init_auth_roles.sql`.
+2. Copy `.env.local.example` to `.env.local` and fill the values from
+   Supabase → Project Settings → API:
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+   - `SUPABASE_SERVICE_ROLE_KEY` (server-only)
+   Set the same variables in Vercel → Settings → Environment Variables.
+3. Sign up at `/login`, then promote your account to admin (see the note at the bottom of the
+   migration file). Admins manage member roles at `/admin`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Role changes are enforced in the database (RLS + a guard trigger), not just the UI. The app builds
+and runs even when Supabase env vars are absent — auth-gated pages show a "not configured" notice.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Email (Resend)
+
+Transactional email uses Resend via its REST API (`src/lib/email/resend.ts`). Set `RESEND_API_KEY`
+and `RESEND_FROM` (a verified sender domain) to enable the welcome email sent after account
+confirmation. For the sign-up *confirmation* email itself, configure Resend as the custom SMTP
+provider in Supabase → Authentication → Emails → SMTP settings.
+
+## Going live on Vercel (checklist)
+
+1. Merge this branch (PR #1) into the Vercel production branch, or point the project's production
+   branch at it. `vercel.json` pins the framework to Next.js.
+2. In Vercel → Settings → Environment Variables, add: `NEXT_PUBLIC_SUPABASE_URL`,
+   `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `RESEND_API_KEY`, `RESEND_FROM`.
+3. Run `supabase/migrations/0001_init_auth_roles.sql` in the Supabase SQL editor.
+4. In Supabase → Authentication → URL Configuration, set the Site URL and add
+   `https://<your-domain>/auth/callback` as a redirect URL.
+5. (Optional) Configure Resend as the Supabase SMTP provider for confirmation emails.
+6. Add the custom domain `peptides.cx` in Vercel and point DNS at it.
+
+## Compliance notes
+
+- All advertising is labeled (Ad / Sponsored / Affiliate Link / Paid Placement).
+- Non-essential cookies (analytics, affiliate tracking, marketing) stay off until the user opts in;
+  rejecting is as easy as accepting (`src/components/compliance/cookie-consent.tsx`).
+- Privacy, Terms, and Imprint pages are structural templates — replace with reviewed legal text
+  before launch.
